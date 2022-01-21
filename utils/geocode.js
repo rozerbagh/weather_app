@@ -1,23 +1,27 @@
 const axios = require('axios');
+require('dotenv').config();
 const request = require('request');
-const mapurl = 'https://api.mapbox.com';
-const mapBoxToken = 'pk.eyJ1Ijoicm96ZXJiYWdoIiwiYSI6ImNrY3kxNG9qYjA1ZDUzMWw3anpuZjB5MHkifQ.vKatxynEU4-IxDSGpGGvaA'
+const mapurl = process.env.MAPBOX_BASE_API;
+const mapBoxToken = process.env.MAPBOX_API_KEY;
 
-const geocode = (address) => {
-    const url = `${mapurl}/geocoding/v5/mapbox.places/${address}.json?access_token=${mapBoxToken}`
+/**
+ * 
+ * @param {*} address the name of the place for mapbox api fecthing request
+ * @param {*} callback the callback function that will take the geocoding data and perform some actions
+ */
+const geocode = (address, callback) => {
+    const url = `${mapurl}/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapBoxToken}`
     request({ url: url, json: true }, (error, response) => {
         if (error) {
-            return "error"
+            throw error;
         }
-        console.log(response.body.features[0].geometry.coordinates[0]);// longitude
-        console.log(response.body.features[0].geometry.coordinates[1]);// latitude
+        const geodata = {
+            longitude: response.body.features[0].geometry.coordinates[0],// longitude
+            latitude: response.body.features[0].geometry.coordinates[1],// latitude
+            details: response.body,
+        }
+        callback(error, geodata)
     });
-    // axios.get(`${mapurl}/geocoding/v5/mapbox.places/${address}.json?access_token=${mapBoxToken}`)
-    //     .then(res => {
-    //         console.log(res.data)
-    //     }).catch(err => {
-    //         console.log(err)
-    //     });
 }
 
 module.exports = geocode;
