@@ -6,7 +6,7 @@ const geocode = require('./utils/geocode');
 const search = require('./utils/search');
 const api_key = process.env.WEATHERSTACK_API_KEY;
 const base_url = process.env.WEATHERSTACK_BASE_API;
-
+const port = process.env.PORT || 9000;
 
 app.get('/:place', (req, res) => {
     console.log(req.params.place);
@@ -25,4 +25,4 @@ app.get('/:place', (req, res) => {
     });
 })
 
-app.listen(9000, () => { })
+app.listen(port, () => { })
