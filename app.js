@@ -10,21 +10,20 @@ const port = process.env.PORT || 9000;
 
 
 app.get('/', (req, res) => {
-    res.send('<h1>Weather Report</h1>')
+    res.send('api_key');
 })
 app.get('/:place', (req, res) => {
     const place = req.params.place;
     geocode(place, (error, { longitude, latitude, details } = {}) => {
-        console.log(longitude, latitude);
         const url = `${base_url}/current?access_key=${api_key}&query=${latitude},${longitude}`;
         request({ url: url, json: true }, (error, response) => {
-            res.send(`<p>The Longitude is ${longitude} and latitude ${latitude}</p>`);
-            // res.send({
-            //     longitude,
-            //     latitude,
-            //     details,
-            //     weather_report: response.body
-            // })
+            // res.send(`<p>The Longitude is ${longitude} and latitude ${latitude}</p>`);
+            res.send({
+                longitude,
+                latitude,
+                details,
+                weather_report: response.body
+            })
         });
     });
 })
