@@ -11,6 +11,9 @@ const mapBoxToken = process.env.MAPBOX_API_KEY;
  */
 const geocode = (address, callback) => {
     const url = `${mapurl}/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapBoxToken}`
+    // axios.get(url).then(res => {
+    //     console.log(res.data)
+    // }).catch(err => console.log(err));
     request({ url: url, json: true }, (error, response) => {
         if (error) {
             throw error;
