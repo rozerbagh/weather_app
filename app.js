@@ -18,12 +18,13 @@ app.get('/:place', (req, res) => {
         console.log(longitude, latitude);
         const url = `${base_url}/current?access_key=${api_key}&query=${latitude},${longitude}`;
         request({ url: url, json: true }, (error, response) => {
-            res.send({
-                longitude,
-                latitude,
-                details,
-                weather_report: response.body
-            })
+            res.send(`<p>The Longitude is ${longitude} and latitude ${latitude}</p>`);
+            // res.send({
+            //     longitude,
+            //     latitude,
+            //     details,
+            //     weather_report: response.body
+            // })
         });
     });
 })
