@@ -10,7 +10,7 @@ const port = process.env.PORT || 9000;
 
 
 app.get('/', (req, res) => {
-    res.send('api_key');
+    res.send(api_key);
 })
 app.get('/:place', (req, res) => {
     const place = req.params.place;
