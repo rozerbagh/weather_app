@@ -17,7 +17,6 @@ app.get('/:place', (req, res) => {
     geocode(place, (error, { longitude, latitude, details } = {}) => {
         const url = `${base_url}/current?access_key=${api_key}&query=${latitude},${longitude}`;
         request({ url: url, json: true }, (error, response) => {
-            // res.send(`<p>The Longitude is ${longitude} and latitude ${latitude}</p>`);
             res.send({
                 longitude,
                 latitude,
