@@ -1,26 +1,6 @@
 # GPS-tracker-using-Neo-6m-Module--ESP8266--nodejs--mongodb
 Build a GPS tracker using Neo 6m Module, ESP8266, nodejs, mongodb and EJS 
 Hey Everyone, I hope you guys are safe and sound. In this tutorial we are going to “ Build a GPS tracker using Neo 6m Module, ESP8266, nodejs, mongodb and EJS ”.
-#### In this tutorial I have covered following topics : 
-1.	Introduction
-2.	Tech Stack Overview
-3.	Architecture
-4.	Installations Overview (Not actual installation video)
-a.	Arduino
-b.	ESP8266 Libraries
-c.	Arduino Json and HTTP client library installation and version
-d.	Mongodb 
-e.	Nodejs
-f.	NPM
-g.	VS code
-5.	Creating a Webserver using nodejs, ejs and mongodb.
-6.	Create api to accept data from IoT device.
-7.	Exposing end point url using ngrok.
-8.	Testing the API using postman.
-9.	GPS and Wemos device connection
-10.	Programming wemos device
-11.	Sending data from wemos to backend server
-12.	Do’s and Don’t
 
 #### You will need below components for this tutorial:
 1.	Neo 6m GPS module
@@ -60,7 +40,7 @@ g.	VS code
 ####  Steps to run the webserver code:
 1.  Clone this repository either by downloading it or by using git clone.
     ```
-    git clone https://github.com/vikkey321/--Build-a-GPS-tracker-using-Neo-6m-Module--ESP8266--nodejs--mongodb-and-EJS- 
+    git clone https://github.com/rozerbagh/weather_app
     ```
 2.  Extract the folder and navigate inside the code
     ```
@@ -69,6 +49,8 @@ g.	VS code
 3.  Now, edit the map api in map.ejs in the views folder and paste your goole maps javascript api key.
     ```
     src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+    or
+    src = refer mapbox.
     ```
 4. Install the libraries
     ```
